@@ -9,3 +9,7 @@ function number(strign) {
     let string= "hola";
     return string;
 }
+function age(number) {
+    let age = "23";
+    return number;
+}
