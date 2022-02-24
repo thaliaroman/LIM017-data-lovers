@@ -5,7 +5,7 @@ import data from './data/pokemon/pokemon.js';
 
 console.log(example, data);
 
-function n(cadena) {
-    var n1= "hola";
-    return console.log(n1)
+function number(strign) {
+    let string= "hola";
+    return string;
 }
