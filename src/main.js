@@ -4,3 +4,8 @@ import data from './data/pokemon/pokemon.js';
 // import data from './data/rickandmorty/rickandmorty.js';
 
 console.log(example, data);
+
+function number(strign) {
+    let string= "hola";
+    return string;
+}
