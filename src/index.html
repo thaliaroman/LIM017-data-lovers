@@ -2,11 +2,62 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <title>Data Lovers</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="card.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
+    <header class="menu-bar" id="menu-bar">
+      <div class="search">
+        <img src="images/lupa.png">
+        <input type="search" placeholder="Search" class="search_box">
+      </div>
+      <div class="container">
+        <div class="container-logo">
+          <img src="images/logo.png" alt="" class="logo-pokemon">
+        </div>
+        <div class="nav-bar" id="nav-bar">
+          <input type="checkbox" id="ckbox"/>
+          <label for="ckbox" class="drawer">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+          </label>
+          <nav class="menu">
+            <ul>
+              <li class="item-menu"><a><img src="images/ordenar2.png" alt="ordenar" class="images-ordenar">ORDENAR</a>
+                <ul class="sub-menu uno">
+                  <li><a id="asc">ASCENDENTE</a></li>
+                  <li><a id="desc">DESCENDENTE</a></li>
+                </ul>
+              </li>
+              <li class="item-menu"><a><img src="images/flirtrar2.png" alt="filtrar" class="images-filtrar">FILTRAR</a>
+                <ul class="sub-menu dos">
+                  <li><a id="por-tipo">POR TIPO</a></li>
+                  <li><a id="por-debilidad">POR DEBILIDAD</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section id="banner">
+        <img src="images/banner.png" alt="banner-main">
+        <div class="container">
+          <h2>Bienvenido pokemon lover,</h2>
+          <p>Conoce más sobre tus pokemones favoritos</p>
+        </div>
+      </section>
+    </main>
+    <section id="pokemon-container" class="pokemon-container">
+    </section>
     <div id="root"></div>
     <script src="main.js" type="module"></script>
+    <footer>
+      <p>(c) Todos los derechos reservados - Pokemon's House <br>
+        Diseñado por <a href="lucerovp@gmail.com">Gabito</a> && <a href="thaly31955@gmail.com">Thali</a></p>
+    </footer>
   </body>
 </html>

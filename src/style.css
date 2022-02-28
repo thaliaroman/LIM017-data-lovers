@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;500&display=swap');
+*{
+    margin:0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+     font-family: 'Roboto', sans-serif;
+}
+
+/* MENUS Y SUBMENUS PARA LAPTOP O PC */
+.search{
+    background: rgba(8, 8, 8, 0.9);
+    height: 35px;
+    /* margin-left: 20px; */
+}
+
+.search img{
+    width: 20px;
+    height: auto;
+    margin-left: 20px;
+    margin-top: 4px;
+}
+
+.search input{
+    height: 30px;
+    width: 300px;
+}
+
+.logo-pokemon{
+    width: 130px;
+    height: 60px;
+}
+
+header{
+    height: 100px;
+    width: 100%;
+    background: rgba(8, 8, 8, 0.9);
+    color:white;
+
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 100;
+}
+
+.container-logo img{
+    float:left
+}
+
+.nav-bar{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+header label{
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    display: none;
+}
+#ckbox{
+    display: none;
+}
+
+.menu ul{
+    background: rgba(8, 8, 8, 0.0);
+    display: flex;
+    list-style: none;
+    margin-top: 0;
+    float: right;
+}
+
+.menu ul li{
+    cursor: pointer;
+}
+
+.menu ul ul{
+    display: none;
+}
+
+.menu a{
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.menu a:hover{
+    background: black;
+}
+
+.menu ul li:hover ul{
+    display: block;
+    position: absolute;
+}
+
+section{
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+/* BANNER */
+#banner{
+    margin-top: 99px;
+    position: relative;
+}
+
+#banner img{
+    width: 100%;
+    height: 100%;
+}
+
+#banner .container{
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translateX(-90%) translateY(-40%);
+    color: white
+}
+
+#banner h2{
+    font-size: 50px;
+}
+
+#banner p{
+    font-size: 30px;
+}
+
+footer{
+    background: black;
+    height: 90px;
+    width: 100%;
+}
+
+footer p{
+    padding: 30px;
+    color:white;
+    text-align: center;
+}
+
+
+/* MENU Y SUBMENUS PARA MOVIL */
+@media (max-width:768px){
+    header label{
+        display: block;
+    }
+
+    .menu{
+        position: absolute;
+        top:100px;
+        width: 100%;
+        transform: translateX(-100%);
+        transition: all 0.5s;
+    }
+
+    .menu ul{
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100vh;
+        background: rgba(51, 51, 51, 0.8);
+    }
+
+    .menu ul li{
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .menu ul ul a{
+        padding: 15px 40px;
+    }
+
+    .menu ul li:hover ul{
+        display: none;
+    }
+
+    #ckbox:checked ~ .menu{
+        transform: translateX(0%);
+    }
+
+    .item-menu:focus ~ .sub-menu, 
+    .item-menu:active ~ .sub-menu, 
+    .item-menu:hover .sub-menu{ 
+        display: block; 
+    }
+    .menu ul li:hover .uno {
+        display: contents;
+    }
+    .menu ul li:hover .dos {
+        display: contents;
+    }
+
+    #banner h2{
+        font-size: 20px;
+    }
+
+    #banner p{
+        font-size: 15px;
+    }
+
+    
+}
+
+
+
+.images-filtrar, .images-ordenar {
+    width: 40px;
+    margin-top: -14px;
+    /* margin-right: 8px; */
+  }
