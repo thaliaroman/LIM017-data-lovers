@@ -8,3 +8,8 @@ export const anotherExample = () => {
   return 'OMG';
 };
 
+export const searchPokemon = (data,busqueda) => {
+  let searchForName=data.filter(pokemon=>pokemon.name(busqueda));
+
+  return searchForName;
+};
