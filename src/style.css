@@ -7,6 +7,9 @@
 
 body{
      font-family: 'Roboto', sans-serif;
+     display: flex;
+     flex-direction: column;
+     min-height: 100vh;
 }
 
 /* MENUS Y SUBMENUS PARA LAPTOP O PC */
@@ -133,10 +136,11 @@ footer{
     background: black;
     height: 90px;
     width: 100%;
+    padding: 30px;
+    margin-top: auto;
 }
 
 footer p{
-    padding: 30px;
     color:white;
     text-align: center;
 }
