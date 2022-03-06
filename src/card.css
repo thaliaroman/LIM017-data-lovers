@@ -2,14 +2,10 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /* align-items: center; */
-    /* justify-content: center; */
-    /* margin-left: 40px; */
-    
+    text-align: center; 
 }
 
 .pokemon-container .container{
-    /* border: 2px solid red; */
     margin-left: 75px;
     margin-bottom: 45px;
 }
@@ -18,7 +14,6 @@
     padding: 30px 30px;
     background: rgb(240, 236, 236);
     border-radius: 10px;
-
 }
 
 .pokemon-container .container .information{
@@ -28,22 +23,20 @@
     padding: 10px;
 }
 
-
 .pokemon-container .container .number-pokemon{
     margin-top: 6px;
     margin-left: 6px;
     font-size: 12px;
     color: gray;
+    text-align: left;
 }
 
 .pokemon-container .container .pokemon-name{
     font-size: 22px;
-    text-align: center;
     color: rgb(10, 10, 10);
 }
 
 .pokemon-container .container .type-pokemon{
-    text-align: center;
     font-size: 15px;
 }
 
@@ -53,9 +46,8 @@
         height: 100%;
         overflow: scroll;
     }
-    
+
     .pokemon-container .container{
-        text-align: center;
         margin-left: 20px;
     }
 }
