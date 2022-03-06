@@ -1,23 +1,18 @@
-import { example, anotherExample } from '../src/data.js';
+import {searchPokemon} from '../src/data.js';
+import data from '../src/data/pokemon/pokemon.js';
 
-
-describe('example', () => {
+describe('searchPokemon', () => {
   it('is a function', () => {
-    expect(typeof example).toBe('function');
-  });
-
-  it('returns `example`', () => {
-    expect(example()).toBe('example');
-  });
+    expect(typeof searchPokemon).toBe('function');
 });
 
-
-describe('anotherExample', () => {
-  it('is a function', () => {
-    expect(typeof anotherExample).toBe('function');
+  it('Debería ser un array', () => {
+    const datos=data.pokemon;
+    expect(Array.isArray(searchPokemon(datos,"bulbasaur"))).toBe(true);
   });
 
-  it('returns `anotherExample`', () => {
-    expect(anotherExample()).toBe('OMG');
+  it('Debería retornar las propiedades para bulbasaur', () => {
+    const datos=data.pokemon;
+    expect(searchPokemon(datos,"bul")[0].name).toBe("bulbasaur");
   });
 });
