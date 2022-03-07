@@ -11,15 +11,15 @@ export const sortPokemon = (allPokemon,name,order) => {
     if(pokemon<pokemon2){
       if(order==="asc"){
         return -1;
-      }else if(order==="desc"){
+      }else{
         return 1;
       }
     }
     if(pokemon>pokemon2){
-      if(order==="asc"){
-        return 1;
-      }else if(order==="desc"){
+      if(order==="desc"){
         return -1;
+      }else{
+        return 1;
       }
     }
   })

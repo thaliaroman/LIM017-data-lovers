@@ -1,4 +1,4 @@
-import {searchPokemon} from '../src/data.js';
+import {searchPokemon,sortPokemon} from '../src/data.js';
 import data from '../src/data/pokemon/pokemon.js';
 
 describe('searchPokemon', () => {
@@ -15,4 +15,23 @@ describe('searchPokemon', () => {
     const datos=data.pokemon;
     expect(searchPokemon(datos,"bul")[0].name).toBe("bulbasaur");
   });
+});
+
+describe('sortPokemon', () => {
+  it('is a function', () => {
+    expect(typeof sortPokemon).toBe('function');
+});
+
+it('Ordenar alfabeticamente de forma ascendente', () => {
+  const array=[{name:'ivysaur'},{name:'bulbasaur'},{name:'charmander'}];
+  const array2=[{name:'bulbasaur'},{name:'charmander'},{name:'ivysaur'}];
+  expect(sortPokemon(array,'name','asc')).toEqual(array2);
+});
+it('Ordenar alfabeticamente de forma descendente', () => {
+  const array=[{name:'charmander'},{name:'bulbasaur'},{name:'ivysaur'}];
+  const array2=[{name:'ivysaur'},{name:'charmander'},{name:'bulbasaur'}];
+  expect(sortPokemon(array,'name','desc')).toEqual(array2);
+});
+
+
 });
