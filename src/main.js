@@ -1,6 +1,7 @@
 import { searchPokemon, sortPokemon, searchPokemonByType} from './data.js';
 
 import data from './data/pokemon/pokemon.js';
+let dataPokemon=data.pokemon;
 let pokemonContainer=document.getElementById("pokemon-container");
 let btnAsc=document.getElementById("asc");
 btnAsc.addEventListener("click",pokemonAsc);
@@ -14,7 +15,7 @@ document.querySelector("#forType").addEventListener("click", function(){
 
 select.addEventListener("change", function(){
   let mostrar=searchPokemonByType(data.pokemon,select.value);
-  return console.log(mostrar);
+  showPokemons('', mostrar);
 })
 
 document.getElementById("search").addEventListener("keyup", function(event){
@@ -24,11 +25,11 @@ document.getElementById("search").addEventListener("keyup", function(event){
 
 
 
-function showPokemons(namePokemon){
+function showPokemons(namePokemon, dataPokemon=data.pokemon){
   pokemonContainer.innerHTML = "";
   if(namePokemon==""){
     
-    for (let properties of data.pokemon) {
+    for (let properties of dataPokemon) {
       pokemonContainer.innerHTML += `
       <div class="container">
         <div class="card">
@@ -42,7 +43,7 @@ function showPokemons(namePokemon){
       <div>`;
     }
   }else{
-    let showForName=searchPokemon(data.pokemon,namePokemon);
+    let showForName=searchPokemon(dataPokemon,namePokemon);
     
     for (let properties of showForName) {
       pokemonContainer.innerHTML += `
@@ -61,12 +62,12 @@ function showPokemons(namePokemon){
 }}
 
 function pokemonAsc() {
-  sortPokemon(data.pokemon,'name','asc');
+  sortPokemon(dataPokemon,'name','asc');
   showPokemons(inputSearch);
 }
 
 document.getElementById("desc").addEventListener("click", function (){
-  sortPokemon(data.pokemon,'name','desc');
+  sortPokemon(dataPokemon,'name','desc');
   showPokemons(inputSearch);
 })
 
