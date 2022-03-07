@@ -1,4 +1,4 @@
-import {searchPokemon,sortPokemon} from '../src/data.js';
+import {searchPokemon,sortPokemon, searchPokemonByType} from '../src/data.js';
 import data from '../src/data/pokemon/pokemon.js';
 
 describe('searchPokemon', () => {
@@ -11,9 +11,10 @@ describe('searchPokemon', () => {
     expect(Array.isArray(searchPokemon(datos,"bulbasaur"))).toBe(true);
   });
 
-  it('Debería retornar las propiedades para bulbasaur', () => {
-    const datos=data.pokemon;
-    expect(searchPokemon(datos,"bul")[0].name).toBe("bulbasaur");
+  it('Buscar pokemones que empiezan con b', () => {
+    const array=[{name:'ivysaur', type:'grass'},{name:'bulbasaur', type:'grass'},{name:'blastoise', type:'water'}];
+    const array2=[{name:'bulbasaur', type:'grass'},{name:'blastoise', type:'water'}]
+    expect(searchPokemon(array,'b')).toEqual(array2);
   });
 });
 
@@ -32,6 +33,16 @@ it('Ordenar alfabeticamente de forma descendente', () => {
   const array2=[{name:'ivysaur'},{name:'charmander'},{name:'bulbasaur'}];
   expect(sortPokemon(array,'name','desc')).toEqual(array2);
 });
+});
 
+describe('searchPokemonByType', () => {
+  it('is a function', () => {
+    expect(typeof searchPokemonByType).toBe('function');
+});
 
+  it('Filtar por tipo de pokemon', () => {
+    const array=[{name:'ivysaur', type:'grass'},{name:'bulbasaur', type:'grass'},{name:'charmander', type:'fire'}];
+    const array2=[{name:'ivysaur', type:'grass'},{name:'bulbasaur', type:'grass'}]
+    expect(searchPokemonByType(array,'grass')).toEqual(array2);
+  });
 });
