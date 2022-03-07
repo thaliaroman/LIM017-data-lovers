@@ -1,17 +1,28 @@
-import { searchPokemon, sortPokemon} from './data.js';
+import { searchPokemon, sortPokemon, searchPokemonByType} from './data.js';
 
 import data from './data/pokemon/pokemon.js';
 let pokemonContainer=document.getElementById("pokemon-container");
 let btnAsc=document.getElementById("asc");
 btnAsc.addEventListener("click",pokemonAsc);
+const select=document.querySelector('#type');
 let inputSearch="";
 document.onload = showPokemons("");
 
+document.querySelector("#forType").addEventListener("click", function(){
+  document.querySelector("#select").style.display="block";
+})
+
+select.addEventListener("change", function(){
+  let mostrar=searchPokemonByType(data.pokemon,select.value);
+  return console.log(mostrar);
+})
+
 document.getElementById("search").addEventListener("keyup", function(event){
     inputSearch = event.target.value
-  
     showPokemons(inputSearch);
 });
+
+
 
 function showPokemons(namePokemon){
   pokemonContainer.innerHTML = "";

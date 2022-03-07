@@ -105,6 +105,10 @@ section{
     margin-bottom: 25px;
 }
 
+#select{
+    display: none;
+}
+
 /* BANNER */
 #banner{
     margin-top: 99px;
