@@ -26,3 +26,11 @@ export const sortPokemon = (allPokemon,name,order) => {
   return sortByForName;
 }
 
+export const searchPokemonByType = (allPokemon,type) => {
+  let filterByType = allPokemon.filter((pokemon) =>{
+    return pokemon.type.includes(type);
+  })
+  return filterByType;
+}
+
+
