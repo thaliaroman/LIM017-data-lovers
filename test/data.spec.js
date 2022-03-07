@@ -16,3 +16,8 @@ describe('searchPokemon', () => {
     expect(searchPokemon(datos,"bul")[0].name).toBe("bulbasaur");
   });
 });
+
+
+
+
+
