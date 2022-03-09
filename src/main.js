@@ -20,6 +20,10 @@ function showPokemons(namePokemon, dataPokemon=data.pokemon){
   if(namePokemon==""){
     
     for (let properties of dataPokemon) {
+      //dataPokemon.forEach((properties)=>{
+      const types=properties.type.map((type)=>{
+        return `<div class="${type} type-tag">${type}</div>`
+      });
       pokemonContainer.innerHTML += `
       <div class="container">
         <div class="card">
@@ -28,14 +32,17 @@ function showPokemons(namePokemon, dataPokemon=data.pokemon){
         <div class="information">
           <h4><p class="number-pokemon">N° ${properties.num}</p> </h4>
           <p class="pokemon-name"> ${properties.name} </p>
-          <p class="type-pokemon">${properties.type}</p>
+          <div class="type-pokemon">${types.join('')}</div>
         <div>
       <div>`;
-    }
+    }//)
   }else{
     let showForName=searchPokemon(dataPokemon,namePokemon);
     
     for (let properties of showForName) {
+      const types=properties.type.map((type)=>{
+        return `<div class="${type} type-tag">${type}</div>`
+      });
       pokemonContainer.innerHTML += `
       <div class="container">
         <div class="card">
@@ -44,7 +51,7 @@ function showPokemons(namePokemon, dataPokemon=data.pokemon){
         <div class="information">
           <h4><p class="number-pokemon">N° ${properties.num}</p> </h4>
           <p class="pokemon-name"> ${properties.name} </p>
-          <p class="type-pokemon">${properties.type}</p>
+          <div class="type-pokemon">${types.join('')}</div>
         <div>
       <div>`; 
       }
@@ -80,4 +87,7 @@ select2.addEventListener("change", function(){
 
   showPokemons('', searchPokemonByWeaknesses(data.pokemon,select2.value));
 })
+
+
+
 
