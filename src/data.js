@@ -33,9 +33,9 @@ export const searchPokemonByType = (allPokemon,type) => {
   return filterByType;
 }
 
-export const searchPokemonByWeaknesses=(allPokemon,type,weaknesses) => {
+export const searchPokemonByWeaknesses=(allPokemon,weaknesses) => {
   let filterByweaknesses=allPokemon.filter((pokemon)=> {
-    return pokemon.weaknesses.includes(weaknesses)
+    return pokemon.weaknesses.includes(weaknesses);
   })
   return filterByweaknesses;
 }

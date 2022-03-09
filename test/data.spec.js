@@ -1,4 +1,4 @@
-import {searchPokemon,sortPokemon, searchPokemonByType} from '../src/data.js';
+import {searchPokemon,sortPokemon, searchPokemonByType,searchPokemonByWeaknesses} from '../src/data.js';
 import data from '../src/data/pokemon/pokemon.js';
 
 describe('searchPokemon', () => {
@@ -46,3 +46,16 @@ describe('searchPokemonByType', () => {
     expect(searchPokemonByType(array,'grass')).toEqual(array2);
   });
 });
+
+describe('searchPokemonByWeaknesses', () => {
+  it('is a function', () => {
+    expect(typeof searchPokemonByWeaknesses).toBe('function');
+});
+
+  it('Filtar por debilidad', () => {
+    const array=[{name:'bulbasaur', weaknesses:'"fire","ice","flying","psychic"'},{name:'ivysaur', weaknesses:'"fire","ice","flying","psychic"'}, {name:'charmeleonur', weaknesses:'"water","ground","rock"'}];
+    const array2=[{name:'bulbasaur', weaknesses:'"fire","ice","flying","psychic"'},{name:'ivysaur', weaknesses:'"fire","ice","flying","psychic"'}];
+    expect(searchPokemonByWeaknesses(array,'fire')).toEqual(array2);
+  });
+});
+

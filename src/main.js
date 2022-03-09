@@ -63,14 +63,21 @@ document.getElementById("desc").addEventListener("click", function (){
 
 document.querySelector("#forType").addEventListener("click", function(){
   document.querySelector(".select").style.display="block";
+  document.querySelector(".select2").style.display="none";
 })
 
 select.addEventListener("change", function(){
   showPokemons('', searchPokemonByType(data.pokemon,select.value));
 })
 
+document.querySelector("#forByWeaknesses").addEventListener("click",function(){
+  document.querySelector(".select").style.display="none";
+  document.querySelector(".select2").style.display="block";
+
+})
+
 select2.addEventListener("change", function(){
-  // let selecdebilidad=searchPokemonByWeaknesses(data.pokemon,select2.value);
+
   showPokemons('', searchPokemonByWeaknesses(data.pokemon,select2.value));
 })
 
