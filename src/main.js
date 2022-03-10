@@ -57,22 +57,35 @@ function showPokemons(namePokemon, dataPokemon=data.pokemon){
       pokemonContainer.innerHTML=pokemonHtml;
 
 }}
-let selecDiv;
+//let selecDiv;
 pokemonContainer.addEventListener("click",function(e) {
   // console.log(e.target.tagName)
   let target = e.target;
   if(target.tagName != "DIV"){
     return;
   }
-  console.log(highlight(target)); 
-});
-function highlight(td) {
-  if (selecDiv) { // quitar cualquier celda destacada que hubiera antes
-    selecDiv.classList.remove('highlight');
+  else{
+    // let pokemonHtml="";
+    // let modP=`<div id="myModal" class="modal">
+    
+    //   <div class="modal-content">
+    //     <span class="close">&times;</span>
+    //     <p>Some text in the Modal..</p>
+    //   </div>
+    
+    // </div>`;
+    // pokemonContainer.innerHTML=pokemonHtml;
+    console.log('hola');
   }
-  selecDiv = td;
-  selecDiv.classList.add('highlight'); // y destacar el nuevo td
-}
+  // console.log(highlight(target)); 
+});
+// function highlight(td) {
+//   if (selecDiv) { // quitar cualquier celda destacada que hubiera antes
+//     selecDiv.classList.remove('highlight');
+//   }
+//   selecDiv = td;
+//   selecDiv.classList.add('highlight'); // y destacar el nuevo td
+// }
 
 let btnAsc=document.getElementById("asc");
 btnAsc.addEventListener("click",pokemonAsc);
@@ -131,6 +144,7 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
 
 
 
