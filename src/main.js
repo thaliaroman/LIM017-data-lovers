@@ -1,12 +1,12 @@
 import { searchPokemon, sortPokemon, searchPokemonByType,searchPokemonByWeaknesses} from './data.js';
 
 import data from './data/pokemon/pokemon.js';
-let dataPokemon=data.pokemon;
-let pokemonContainer=document.getElementById("pokemon-container");
+const dataPokemon=data.pokemon;
+const pokemonContainer=document.getElementById("pokemon-container");
 const select=document.querySelector('#type');
 const select2=document.querySelector('#weaknesses');
 let inputSearch="";
-document.onload = showPokemons("");
+document.onload = showPokemons(inputSearch);
 
 document.getElementById("search").addEventListener("keyup", function(event){
     inputSearch = event.target.value
@@ -23,7 +23,7 @@ function showPokemons(namePokemon, dataPokemon=data.pokemon){
       });
       pokemonHtml += `
       <div class="container">
-       <button id="myBtn"><div class="card">
+       <button><div class="card ${properties.name}">
           <img src=${properties.img}>
         </div></button>
         <div class="information">
@@ -31,7 +31,6 @@ function showPokemons(namePokemon, dataPokemon=data.pokemon){
           <p class="pokemon-name"> ${properties.name} </p>
           <div class="type-pokemon">${types.join('')}</div>
         </div>
- 
     </div>`;
     }
     pokemonContainer.innerHTML=pokemonHtml;
@@ -44,9 +43,9 @@ function showPokemons(namePokemon, dataPokemon=data.pokemon){
       });
       pokemonHtml += `
       <div class="container">
-        <div class="card">
+        <button><div class="card ${properties.name}">
           <img src=${properties.img}>
-        </div>
+        </div></button>
         <div class="information">
           <h4><p class="number-pokemon">N° ${properties.num}</p> </h4>
           <p class="pokemon-name"> ${properties.name} </p>
@@ -55,37 +54,55 @@ function showPokemons(namePokemon, dataPokemon=data.pokemon){
       </div>`; 
       }
       pokemonContainer.innerHTML=pokemonHtml;
-
 }}
-//let selecDiv;
+
 pokemonContainer.addEventListener("click",function(e) {
-  // console.log(e.target.tagName)
+  let modalPokemon="";
   let target = e.target;
-  if(target.tagName != "DIV"){
+  
+  if(!target.className.startsWith("card")){
     return;
   }
   else{
-    // let pokemonHtml="";
-    // let modP=`<div id="myModal" class="modal">
     
-    //   <div class="modal-content">
-    //     <span class="close">&times;</span>
-    //     <p>Some text in the Modal..</p>
-    //   </div>
-    
-    // </div>`;
-    // pokemonContainer.innerHTML=pokemonHtml;
-    console.log('hola');
+    let modalHtml = document.getElementById("myModal");
+    let selectedPokemon = searchPokemon(data.pokemon, target.className.split(' ')[1]);
+    for (let properties of selectedPokemon){
+    modalPokemon=`
+    <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  
+    <div class="container">
+       <button><div class="card">
+          <img src=${properties.img}>
+        </div></button>
+        <div class="information">
+          <h4><p class="number-pokemon">N° ${properties.num}</p> </h4>
+          <p class="pokemon-name"> ${properties.name} </p>
+          <div class="type-pokemon">${properties.type}</div>
+        </div>
+    </div>
+  </div>`;
+    }
+    modalHtml.innerHTML=modalPokemon;
+// Get the <span> element that closes the modal
+let span = document.getElementsByClassName("close")[0];
+
+modalHtml.style.display = "block";
+
+// When the user clicks on <span> (x), close the modal
+span.addEventListener("click", function(){
+  modalHtml.style.display = "none";
+})
+
+window.addEventListener("click", function(event){
+  if (event.target == modalHtml) {
+    modalHtml.style.display = "none";
   }
-  // console.log(highlight(target)); 
+})
+}
 });
-// function highlight(td) {
-//   if (selecDiv) { // quitar cualquier celda destacada que hubiera antes
-//     selecDiv.classList.remove('highlight');
-//   }
-//   selecDiv = td;
-//   selecDiv.classList.add('highlight'); // y destacar el nuevo td
-// }
 
 let btnAsc=document.getElementById("asc");
 btnAsc.addEventListener("click",pokemonAsc);
@@ -120,30 +137,6 @@ select2.addEventListener("change", function(){
   showPokemons('', searchPokemonByWeaknesses(data.pokemon,select2.value));
 })
 
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
 
 
 
