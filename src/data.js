@@ -31,6 +31,7 @@ export const searchPokemonByType = (allPokemon,type) => {
     return pokemon.type.includes(type);
   })
   return filterByType;
+  
 }
 
 export const searchPokemonByWeaknesses=(allPokemon,weaknesses) => {
@@ -40,5 +41,6 @@ export const searchPokemonByWeaknesses=(allPokemon,weaknesses) => {
   return filterByweaknesses;
 }
 
-
-
+export const computeType=(allPokemon,properties)=>{
+  searchPokemonByType(allPokemon,properties);
+  }
