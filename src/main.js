@@ -5,6 +5,7 @@ const dataPokemon=data.pokemon;
 const pokemonContainer=document.getElementById("pokemon-container");
 const selectByType=document.querySelector('#type');
 const selectByWeaknesses=document.querySelector('#weaknesses');
+const countFilteredPokemon=document.getElementById('mensaje');
 let inputSearch="";
 document.onload = showPokemons(inputSearch);
 
@@ -80,11 +81,21 @@ document.querySelector("#forByWeaknesses").addEventListener("click",function(){
 })
 
 selectByType.addEventListener("change", function(){
+  // countFilteredPokemon.innerHTML="";
+  // let some="";
   showPokemons('', searchPokemonByType(data.pokemon,selectByType.value));
+  let countForType=searchPokemonByType(data.pokemon,selectByType.value).length;
+  countFilteredPokemon.innerHTML=countForType;
+  // let some=`
+  // <div class="sumPokemons"${countForType}>
+  // </div>`
+  // countFilteredPokemon.innerHTML=some;
 })
 
 selectByWeaknesses.addEventListener("change", function(){
   showPokemons('', searchPokemonByWeaknesses(data.pokemon,selectByWeaknesses.value));
+  let countForWeaknesses=searchPokemonByWeaknesses(data.pokemon,selectByWeaknesses.value).length;
+  countFilteredPokemon.innerHTML=countForWeaknesses;
 })
 
 //MODAL
