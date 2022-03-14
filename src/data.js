@@ -14,8 +14,7 @@ export const sortPokemon = (allPokemon,name,order) => {
       }else{
         return 1;
       }
-    }
-    if(pokemon>pokemon2){
+    }else {
       if(order==="desc"){
         return -1;
       }else{
@@ -41,11 +40,7 @@ export const searchPokemonByWeaknesses=(allPokemon,weaknesses) => {
   return filterByweaknesses;
 }
 
-export const computeProperties=(allPokemon,properties)=>{
-  //let pokemonForType=searchPokemonByType(allPokemon,properties).length;
-  //let pokemonForWeaknesses=searchPokemonByWeaknesses(allPokemon,properties).length;
-  let total=((properties.length*100)/allPokemon.length).toFixed(2);
-  let showTotal=total+" %";
-  return showTotal;
+export const computeProperties =(allPokemon,properties)=>{
+  let total=((properties*100)/allPokemon).toFixed(2);
+  return total;
 }
-
