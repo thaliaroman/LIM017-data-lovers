@@ -1,4 +1,4 @@
-import { searchPokemon, sortPokemon, searchPokemonByType,searchPokemonByWeaknesses,computeType} from './data.js';
+import { searchPokemon, sortPokemon, searchPokemonByType,searchPokemonByWeaknesses,computeProperties} from './data.js';
 
 import data from './data/pokemon/pokemon.js';
 const dataPokemon=data.pokemon;
@@ -7,10 +7,14 @@ const selectByType=document.querySelector('#type');
 const selectByWeaknesses=document.querySelector('#weaknesses');
 const countFilteredPokemon=document.getElementById('sumOfPokemons');
 const percentagesByPokemon=document.getElementById('percentage');
+const countFilteredPokemon2=document.querySelector('.sumOfPokemons');
+const percentagesByPokemon2=document.querySelector('.percentage');
 let inputSearch="";
 document.onload = showPokemons(inputSearch);
 
 document.getElementById("search").addEventListener("keyup", function(event){
+    document.querySelector('#containerCalculatebyWeaknesses').style.display="none";
+    document.querySelector('#containerCalculatebyType').style.display="none";
     inputSearch = event.target.value
     showPokemons(inputSearch);
 });
@@ -25,7 +29,7 @@ function showPokemons(namePokemon, dataPokemon=data.pokemon){
       });
       pokemonHtml += `
       <div class="container">
-        <button><div class="card ${properties.name}">
+        <button class="buttonCard"><div class="card ${properties.name}">
           <img src=${properties.img}>
         </div></button>
         <div class="information">
@@ -44,7 +48,7 @@ function showPokemons(namePokemon, dataPokemon=data.pokemon){
       });
       pokemonHtml += `
       <div class="container">
-        <button><div class="card ${properties.name}">
+        <button class="buttonCard"><div class="card ${properties.name}">
           <img src=${properties.img}>
         </div></button>
         <div class="information">
@@ -61,11 +65,15 @@ let btnAsc=document.getElementById("asc");
 btnAsc.addEventListener("click",pokemonAsc);
 
 function pokemonAsc() {
+  document.querySelector('#containerCalculatebyWeaknesses').style.display="none";
+  document.querySelector('#containerCalculatebyType').style.display="none";
   sortPokemon(dataPokemon,'name','asc');
   showPokemons(inputSearch);
 }
 
 document.getElementById("desc").addEventListener("click", function (){
+  document.querySelector('#containerCalculatebyWeaknesses').style.display="none";
+  document.querySelector('#containerCalculatebyType').style.display="none";
   sortPokemon(dataPokemon,'name','desc');
   showPokemons(inputSearch);
 })
@@ -73,28 +81,33 @@ document.getElementById("desc").addEventListener("click", function (){
 document.querySelector("#forType").addEventListener("click", function(){
   document.querySelector(".select").style.display="block";
   document.querySelector(".select2").style.display="none";
+  document.querySelector('#containerCalculatebyWeaknesses').style.display="none";
 })
 
 document.querySelector("#forByWeaknesses").addEventListener("click",function(){
   document.querySelector(".select").style.display="none";
   document.querySelector(".select2").style.display="block";
+  document.querySelector('#containerCalculatebyType').style.display="none";
 
 })
 
 selectByType.addEventListener("change", function(){
-  showPokemons('', searchPokemonByType(data.pokemon,selectByType.value));
-  document.querySelector('#padre').style.display="block";
-  let countForType=searchPokemonByType(data.pokemon,selectByType.value).length;
+  document.querySelector('#containerCalculatebyType').style.display="block";
+  showPokemons('', searchPokemonByType(dataPokemon,selectByType.value));
+  let countForType=searchPokemonByType(dataPokemon,selectByType.value).length;
   countFilteredPokemon.innerHTML=countForType;
-  let operationPercent=computeType(data.pokemon,selectByType.value);
+  let operationPercent=computeProperties(dataPokemon,selectByType.value);
   percentagesByPokemon.innerHTML=operationPercent;
   
 })
 
 selectByWeaknesses.addEventListener("change", function(){
-  showPokemons('', searchPokemonByWeaknesses(data.pokemon,selectByWeaknesses.value));
-  let countForWeaknesses=searchPokemonByWeaknesses(data.pokemon,selectByWeaknesses.value).length;
-  countFilteredPokemon.innerHTML=countForWeaknesses;
+  document.querySelector('#containerCalculatebyWeaknesses').style.display="block";
+  showPokemons('', searchPokemonByWeaknesses(dataPokemon,selectByWeaknesses.value));
+  let countForWeaknesses=searchPokemonByWeaknesses(dataPokemon,selectByWeaknesses.value).length;
+  countFilteredPokemon2.innerHTML=countForWeaknesses;
+  let operationPercent=computeProperties(dataPokemon.length,countForWeaknesses);
+  percentagesByPokemon2.innerHTML=operationPercent;
 })
 
 //MODAL
@@ -109,13 +122,13 @@ pokemonContainer.addEventListener("click",function(e) {
     let selectedPokemon = searchPokemon(dataPokemon, target.className.split(' ')[1]);
     for (let properties of selectedPokemon){
       const types=properties.type.map((type)=>{
-        return `<div class="${type} type-tagByModal">${type}</div>`
+        return `<div class="${type} properties-tagByModal">${type}</div>`
       });
       const resistants=properties.resistant.map((resistant)=>{
-        return `<div class="${resistant} resistant-tagByModal">${resistant}</div>`;
+        return `<div class="${resistant} properties-tagByModal">${resistant}</div>`;
       });
       const weaknesses=properties.weaknesses.map((weaknesses)=>{
-        return `<div class="${weaknesses}weadnesses-tagByModal">${weaknesses}</div>`;
+        return `<div class="${weaknesses} properties-tagByModal">${weaknesses}</div>`;
       });
       modalPokemon=`
       <div class="modal-content">
@@ -123,23 +136,24 @@ pokemonContainer.addEventListener("click",function(e) {
         <div class="container">
           <div class="card">
             <img src=${properties.img}>
-            <h4><p class="number-pokemon">N° ${properties.num}</p> </h4>
-            <p class="pokemon-name"> ${properties.name} </p>
+            <h4><p class="number-pokemon">N° ${properties.num}</p></h4>
+            <p class="pokemon-name"> ${properties.name}</p>
           </div>
           <div class="information">
-          <h2 class="tittle">Descripción</h2><br>
+            <h2>Descripción</h2><br>
             <p class="about">${properties.about}</p>
-          <br><h2 class="tittle">Información básica</h2><br>
+            <br><h2>Información básica</h2><br>
             <p class="size-h"> Alto: ${properties.size.height} </p>
             <p class="size-w"> Peso: ${properties.size.weight}</p> 
-            <br><p class="hisGeneration">Generacion:</p>
+            <br><p class="theirGeneration">Generacion:</p>
             <p class="generation">N°: ${properties.generation.num}</p>
-            <p class="generation-name"> Nombre:${properties.generation.name}</p>  
-            <div class="type-pokemon"> Tipo: ${types.join('')}</div>
-            <br><h2 class="tittle">Resistencias</h2><br>
-            <div class="forResistant">${resistants.join('')}</div>
-            <br><h2 class="tittle">Debilidades</h2><br>
-            <div class="forWeaknesses">${weaknesses.join('')}</div>
+            <p class="generation-name"> Nombre: ${properties.generation.name}</p>
+            <br><h2>Tipo</h2>  
+            <div class="properties-pokemon">${types.join('')}</div>
+            <br><h2>Resistencias</h2>
+            <div class="properties-pokemon">${resistants.join('')}</div>
+            <br><h2>Debilidades</h2>
+            <div class="properties-pokemon">${weaknesses.join('')}</div>
           </div>
         </div>
       </div>`;
