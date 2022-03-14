@@ -1,11 +1,12 @@
-import { searchPokemon, sortPokemon, searchPokemonByType,searchPokemonByWeaknesses} from './data.js';
+import { searchPokemon, sortPokemon, searchPokemonByType,searchPokemonByWeaknesses,computeType} from './data.js';
 
 import data from './data/pokemon/pokemon.js';
 const dataPokemon=data.pokemon;
 const pokemonContainer=document.getElementById("pokemon-container");
 const selectByType=document.querySelector('#type');
 const selectByWeaknesses=document.querySelector('#weaknesses');
-const countFilteredPokemon=document.getElementById('mensaje');
+const countFilteredPokemon=document.getElementById('sumOfPokemons');
+const percentagesByPokemon=document.getElementById('percentage');
 let inputSearch="";
 document.onload = showPokemons(inputSearch);
 
@@ -81,15 +82,13 @@ document.querySelector("#forByWeaknesses").addEventListener("click",function(){
 })
 
 selectByType.addEventListener("change", function(){
-  // countFilteredPokemon.innerHTML="";
-  // let some="";
   showPokemons('', searchPokemonByType(data.pokemon,selectByType.value));
+  document.querySelector('#padre').style.display="block";
   let countForType=searchPokemonByType(data.pokemon,selectByType.value).length;
   countFilteredPokemon.innerHTML=countForType;
-  // let some=`
-  // <div class="sumPokemons"${countForType}>
-  // </div>`
-  // countFilteredPokemon.innerHTML=some;
+  let operationPercent=computeType(data.pokemon,selectByType.value);
+  percentagesByPokemon.innerHTML=operationPercent;
+  
 })
 
 selectByWeaknesses.addEventListener("change", function(){
@@ -112,18 +111,35 @@ pokemonContainer.addEventListener("click",function(e) {
       const types=properties.type.map((type)=>{
         return `<div class="${type} type-tagByModal">${type}</div>`
       });
+      const resistants=properties.resistant.map((resistant)=>{
+        return `<div class="${resistant} resistant-tagByModal">${resistant}</div>`;
+      });
+      const weaknesses=properties.weaknesses.map((weaknesses)=>{
+        return `<div class="${weaknesses}weadnesses-tagByModal">${weaknesses}</div>`;
+      });
       modalPokemon=`
       <div class="modal-content">
       <span class="close">&times;</span>
-      <p>Some text in the Modal..</p>
         <div class="container">
           <div class="card">
             <img src=${properties.img}>
-          </div>
-          <div class="information">
             <h4><p class="number-pokemon">N° ${properties.num}</p> </h4>
             <p class="pokemon-name"> ${properties.name} </p>
-            <div class="type-pokemon">${types.join('')}</div>
+          </div>
+          <div class="information">
+          <h2 class="tittle">Descripción</h2><br>
+            <p class="about">${properties.about}</p>
+          <br><h2 class="tittle">Información básica</h2><br>
+            <p class="size-h"> Alto: ${properties.size.height} </p>
+            <p class="size-w"> Peso: ${properties.size.weight}</p> 
+            <br><p class="hisGeneration">Generacion:</p>
+            <p class="generation">N°: ${properties.generation.num}</p>
+            <p class="generation-name"> Nombre:${properties.generation.name}</p>  
+            <div class="type-pokemon"> Tipo: ${types.join('')}</div>
+            <br><h2 class="tittle">Resistencias</h2><br>
+            <div class="forResistant">${resistants.join('')}</div>
+            <br><h2 class="tittle">Debilidades</h2><br>
+            <div class="forWeaknesses">${weaknesses.join('')}</div>
           </div>
         </div>
       </div>`;
@@ -144,6 +160,8 @@ pokemonContainer.addEventListener("click",function(e) {
     })
   }
 });
+
+
 
 
 

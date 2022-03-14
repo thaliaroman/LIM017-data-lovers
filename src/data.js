@@ -42,5 +42,8 @@ export const searchPokemonByWeaknesses=(allPokemon,weaknesses) => {
 }
 
 export const computeType=(allPokemon,properties)=>{
-  searchPokemonByType(allPokemon,properties);
+  let pokemonForType=searchPokemonByType(allPokemon,properties).length;
+  let total=((pokemonForType*100)/251).toFixed(2);
+  let showTotal=total+" %";
+  return showTotal;
   }

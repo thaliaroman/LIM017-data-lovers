@@ -35,3 +35,27 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+  .modal .modal-content .container{
+    display:flex;
+  }
+
+  .modal .modal-content .container .card img {
+    width: 200px;
+    height: auto;
+  }
+
+  .modal .modal-content .container .card{
+    text-align: center;
+  }
+  .modal .modal-content .container .card .pokemon-name {
+    font-size:20px;
+  }
+
+  .modal .modal-content .container .information .type-pokemon{
+    width:30%;
+    display:flex;
+    background:pink;
+    justify-content:space-evenly;
+    text-align:left;
+  }

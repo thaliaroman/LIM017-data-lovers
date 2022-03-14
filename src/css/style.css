@@ -175,6 +175,26 @@ select:focus{ outline: none;}
 	pointer-events: none;
 }
 
+/*SUBTITULOS DE TOTALES Y POORCENTAJES*/
+
+
+#padre{
+    display:none;
+    color: blue;
+    font-size:20px;
+}
+
+#countFilteredPokemon{
+    display:flex;
+    justify-content:center;
+}
+
+
+#percentagesByPokemon{
+    display:flex;
+    justify-content:center;
+}
+
 /* BANNER */
 #banner{
     margin-top: 99px;
