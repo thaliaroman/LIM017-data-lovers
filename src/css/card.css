@@ -10,10 +10,13 @@
     margin-bottom: 45px;
 }
 
+.pokemon-container .container .buttonCard{
+    border-radius: 10px;
+    cursor: pointer;
+}
 .pokemon-container .container .card{
     padding: 30px 30px;
     background: rgb(240, 236, 236);
-    border-radius: 10px;
 }
 
 .pokemon-container .container .information{

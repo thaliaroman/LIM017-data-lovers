@@ -178,21 +178,27 @@ select:focus{ outline: none;}
 /*SUBTITULOS DE TOTALES Y POORCENTAJES*/
 
 
-#padre{
+#containerCalculatebyType{
     display:none;
     color: blue;
     font-size:20px;
 }
 
-#countFilteredPokemon{
+.countFilteredPokemon{
     display:flex;
     justify-content:center;
 }
 
 
-#percentagesByPokemon{
+.percentagesByPokemon{
     display:flex;
     justify-content:center;
+}
+
+#containerCalculatebyWeaknesses{
+    display:none;
+    color: blue;
+    font-size:20px;
 }
 
 /* BANNER */
