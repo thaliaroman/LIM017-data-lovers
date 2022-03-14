@@ -96,9 +96,8 @@ selectByType.addEventListener("change", function(){
   showPokemons('', searchPokemonByType(dataPokemon,selectByType.value));
   let countForType=searchPokemonByType(dataPokemon,selectByType.value).length;
   countFilteredPokemon.innerHTML=countForType;
-  let operationPercent=computeProperties(dataPokemon,selectByType.value);
-  percentagesByPokemon.innerHTML=operationPercent;
-  
+  let operationPercent=computeProperties(dataPokemon.length,countForType);
+  percentagesByPokemon.innerHTML=operationPercent+"%";
 })
 
 selectByWeaknesses.addEventListener("change", function(){
@@ -107,7 +106,7 @@ selectByWeaknesses.addEventListener("change", function(){
   let countForWeaknesses=searchPokemonByWeaknesses(dataPokemon,selectByWeaknesses.value).length;
   countFilteredPokemon2.innerHTML=countForWeaknesses;
   let operationPercent=computeProperties(dataPokemon.length,countForWeaknesses);
-  percentagesByPokemon2.innerHTML=operationPercent;
+  percentagesByPokemon2.innerHTML=operationPercent+" %";
 })
 
 //MODAL
@@ -154,6 +153,8 @@ pokemonContainer.addEventListener("click",function(e) {
             <div class="properties-pokemon">${resistants.join('')}</div>
             <br><h2>Debilidades</h2>
             <div class="properties-pokemon">${weaknesses.join('')}</div>
+            <div class="btnStats"><button class="btn">aceptar</button>
+            </div>
           </div>
         </div>
       </div>`;
@@ -174,6 +175,11 @@ pokemonContainer.addEventListener("click",function(e) {
     })
   }
 });
+
+document.querySelector(".btn").addEventListener("click", function(){
+  document.querySelector("modal").style.display = "none"
+  document.write("hola");
+})
 
 
 

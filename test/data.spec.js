@@ -1,4 +1,4 @@
-import {searchPokemon,sortPokemon, searchPokemonByType,searchPokemonByWeaknesses} from '../src/data.js';
+import {searchPokemon,sortPokemon, searchPokemonByType,searchPokemonByWeaknesses,computeProperties} from '../src/data.js';
 import data from '../src/data/pokemon/pokemon.js';
 
 describe('searchPokemon', () => {
@@ -12,8 +12,8 @@ describe('searchPokemon', () => {
   });
 
   it('Buscar pokemones que empiezan con b', () => {
-    const array=[{name:'ivysaur', type:'grass'},{name:'bulbasaur', type:'grass'},{name:'blastoise', type:'water'}];
-    const array2=[{name:'bulbasaur', type:'grass'},{name:'blastoise', type:'water'}]
+    const array=[{name:'ivysaur', type:'grass'},{name:'bulbasaur',  type:['grass','poison']},{name:'blastoise', type:'water'}];
+    const array2=[{name:'bulbasaur',  type:['grass','poison']},{name:'blastoise', type:'water'}]
     expect(searchPokemon(array,'b')).toEqual(array2);
   });
 });
@@ -41,8 +41,8 @@ describe('searchPokemonByType', () => {
 });
 
   it('Filtar por tipo de pokemon', () => {
-    const array=[{name:'ivysaur', type:'grass'},{name:'bulbasaur', type:'grass'},{name:'charmander', type:'fire'}];
-    const array2=[{name:'ivysaur', type:'grass'},{name:'bulbasaur', type:'grass'}]
+    const array=[{name:'ivysaur', type:'grass'},{name:'bulbasaur', type:['grass','poison']},{name:'charmander', type:'fire'}];
+    const array2=[{name:'ivysaur', type:'grass'},{name:'bulbasaur', type:['grass','poison']}]
     expect(searchPokemonByType(array,'grass')).toEqual(array2);
   });
 });
@@ -58,4 +58,20 @@ describe('searchPokemonByWeaknesses', () => {
     expect(searchPokemonByWeaknesses(array,'fire')).toEqual(array2);
   });
 });
+
+describe('computeProperties', () => {
+  it('is a function', () => {
+    expect(typeof computeProperties).toBe('function');
+});
+
+it('calcular por tipo', () => {
+  const array=[{name:'ivysaur', type:'grass'},{name:'bulbasaur',  type:['grass','poison']},{name:'charmander', type:'fire'}];
+  let countForType= searchPokemonByType(array,'grass')
+  const percentage="66.67";
+  expect(computeProperties(array.length,countForType.length)).toEqual(percentage);
+
+});
+});
+
+
 
