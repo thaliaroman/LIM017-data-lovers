@@ -1,5 +1,5 @@
 export const searchPokemon = (allPokemon,name) => {
-  let searchForName=allPokemon.filter((pokemon) => {
+  let searchForName=allPokemon.filter(function(pokemon) {
     return pokemon.name.startsWith(name);
   })
   return searchForName;
