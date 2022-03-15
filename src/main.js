@@ -9,15 +9,6 @@ const countFilteredPokemon=document.getElementById('sumOfPokemons');
 const percentagesByPokemon=document.getElementById('percentage');
 const countFilteredPokemon2=document.querySelector('.sumOfPokemons');
 const percentagesByPokemon2=document.querySelector('.percentage');
-let inputSearch="";
-document.onload = showPokemons(inputSearch);
-
-document.getElementById("search").addEventListener("keyup", function(event){
-    document.querySelector('#containerCalculatebyWeaknesses').style.display="none";
-    document.querySelector('#containerCalculatebyType').style.display="none";
-    inputSearch = event.target.value
-    showPokemons(inputSearch);
-});
 
 function showPokemons(namePokemon, dataPokemon=data.pokemon){
   pokemonContainer.innerHTML = "";
@@ -59,7 +50,17 @@ function showPokemons(namePokemon, dataPokemon=data.pokemon){
       </div>`; 
       }
       pokemonContainer.innerHTML=pokemonHtml;
-}}
+    }
+}
+let inputSearch="";
+document.onload = showPokemons(inputSearch);
+
+document.getElementById("search").addEventListener("keyup", function(event){
+    document.querySelector('#containerCalculatebyWeaknesses').style.display="none";
+    document.querySelector('#containerCalculatebyType').style.display="none";
+    inputSearch = event.target.value
+    showPokemons(inputSearch);
+});
 
 let btnAsc=document.getElementById("asc");
 btnAsc.addEventListener("click",pokemonAsc);
@@ -153,7 +154,7 @@ pokemonContainer.addEventListener("click",function(e) {
             <div class="properties-pokemon">${resistants.join('')}</div>
             <br><h2>Debilidades</h2>
             <div class="properties-pokemon">${weaknesses.join('')}</div>
-            <div class="btnStats"><button id="btnS">aceptar</button></div>
+            <div class="btnStats"><button id="btnStats">aceptar</button></div>
           </div>
         </div>
       </div>`;
@@ -172,55 +173,53 @@ pokemonContainer.addEventListener("click",function(e) {
         modalHtml.style.display = "none";
       }
     })
-    document.getElementById("btnS").addEventListener("click", function(){
+    document.getElementById("btnStats").addEventListener("click", function(){
       document.querySelector(".containerByModal").style.display = "none";
       let selectedPokemon2 = searchPokemon(dataPokemon, target.className.split(' ')[1]);
         for (let properties of selectedPokemon2){
-          let modalByStats=`<div class="modal-content">
-          <div id="volverCh">
-          <button id="volver">Volver</button>
-          <canvas id="myChart"></canvas></div></div>`
-          modalHtml.innerHTML=modalByStats;
-          let ctx = document.getElementById('myChart').getContext('2d');
-          const myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-              labels: ['ataque', 'defensa', 'estamina', 'maximo-cp', 'maximo-hp'],
-              datasets: [{
-                label: '# of Votes',
-                data: [`${properties.stats['base-attack']}`, `${properties.stats['base-defense']}`, `${properties.stats['base-stamina']}`, `${properties.stats['max-cp']}`, `${properties.stats['max-hp']}`],
-                backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            }
-          });
+          console.log(properties)
+        //   let modalByStats=`
+        //   <div class="modal-content">
+        //   <p id="namePokemon">Pokemon: ${properties.name}</p>
+        //   <canvas id="myChart"></canvas>
+        //   </div>`
+        //   modalHtml.innerHTML=modalByStats;
+        //   let ctx = document.getElementById('myChart').getContext('2d');
+        //   const myChart = new Chart(ctx, {
+        //     type: 'bar',
+        //     data: {
+        //       labels: ['ataque', 'defensa', 'estamina', 'maximo-cp', 'maximo-hp'],
+        //       datasets: [{
+        //         label: 'Stats of Pokemon',
+        //         data: [`${properties.stats['base-attack']}`, `${properties.stats['base-defense']}`, `${properties.stats['base-stamina']}`, `${properties.stats['max-cp']}`, `${properties.stats['max-hp']}`],
+        //         backgroundColor: [
+        //           'rgba(255, 99, 132, 0.2)',
+        //           'rgba(54, 162, 235, 0.2)',
+        //           'rgba(255, 206, 86, 0.2)',
+        //           'rgba(75, 192, 192, 0.2)',
+        //           'rgba(153, 102, 255, 0.2)',
+        //           'rgba(255, 159, 64, 0.2)'
+        //         ],
+        //         borderColor: [
+        //           'rgba(255, 99, 132, 1)',
+        //           'rgba(54, 162, 235, 1)',
+        //           'rgba(255, 206, 86, 1)',
+        //           'rgba(75, 192, 192, 1)',
+        //           'rgba(153, 102, 255, 1)',
+        //           'rgba(255, 159, 64, 1)'
+        //         ],
+        //         borderWidth: 1
+        //       }]
+        //     },
+        //     options: {
+        //       scales: {
+        //         y: {
+        //           beginAtZero: true
+        //         }
+        //       }
+        //     }
+        //   });
         }
-        document.getElementById("volver").addEventListener("click",function(){
-          document.querySelector("#volverCh").style.display = "none";
-          document.querySelector(".containerByModal").style.display = "block";
-        })
       });
   }
 });
