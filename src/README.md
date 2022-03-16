@@ -2,7 +2,7 @@
 Desarrollo de una página web para jugadores de pokemon Go.
 
 ## DEFINICIÓN DEL PROBLEMA
-- No tener una página web que brinde información interactiva sobre las características principales de los pokemones.
+No tener una página web que brinde información interactiva sobre las características principales de los pokemones.
 
 ## JUSTIFICACIÓN
 Al no contar con una pagina web, se crea Pokemons' house, la cual ofrece a los usuarios informacion básica acerca de los pokemones.
@@ -21,7 +21,7 @@ Esta página esta desarrollada por un lenguaje de programación en javascript, H
 ### DIRECTOS
 - Jugadores de Pokemon Go
 ### INDIRECTOS
--Público en general.
+- Público en general.
 
 ## HISTORIAS DE USUARIO
 ### INVESTIGACIÓN 
@@ -38,8 +38,13 @@ Basándonos en estos dos perfiles, se plantearon 5 historias de usuarios para tr
 [![Historias-de-usuarios.jpg](https://i.postimg.cc/ZqCnxj35/Historias-de-usuarios.jpg)](https://postimg.cc/yJC7VmvM)
 
 ## DISEÑO DEL PROTOTIPO
-### Prototipo de baja fidelidad
+### PROTOTIPO DE BAJA FIDELIDAD
 #### DESKTOP
+
+  * Primer boceto
+
+  [![primer1-boceto.jpg](https://i.postimg.cc/L51mb63q/primer1-boceto.jpg)](https://postimg.cc/bSqXGPM8)
+
   * Primera historia(Mostrar todos los pokemones)  
   
   [![1.jpg](https://i.postimg.cc/MpL1yn4V/1.jpg)](https://postimg.cc/bZQGPwqw)
@@ -63,10 +68,7 @@ Basándonos en estos dos perfiles, se plantearon 5 historias de usuarios para tr
   [![7.jpg](https://i.postimg.cc/JnV656gN/7.jpg)](https://postimg.cc/7C9nxVqh)
 
 #### MOVIL
-  * Primer boceto
-
-  [![primer1-boceto.jpg](https://i.postimg.cc/L51mb63q/primer1-boceto.jpg)](https://postimg.cc/bSqXGPM8)
-
+  
   * Primera historia(Mostrar todos los pokemones)  
   
   [![1movil.jpg](https://i.postimg.cc/wBhcg6fN/1movil.jpg)](https://postimg.cc/kVgtyddM)
@@ -93,7 +95,7 @@ Basándonos en estos dos perfiles, se plantearon 5 historias de usuarios para tr
 
   [![8movil.jpg](https://i.postimg.cc/y8hkNkK7/8movil.jpg)](https://postimg.cc/Yv9pn2jP)
 
-  ### Prototipo de alta fidelidad
+  ### PROTOTIPO DE ALTA FIDELIDAD
 
   * Prototipo completo en [figma](https://www.figma.com/file/XTbmUrdFjtBPJKugH0jxtO/Untitled?node-id=0%3A1)
 
@@ -215,8 +217,7 @@ Esta sección está para ayudarte a llevar un control de lo que vas completando.
 
 ### Parte Opcional: "Hacker edition"
 
-* [x] Implementa `validator.getIssuer`.
-* [x] Interfaz muestra la franquicia de la tarjeta
+* [x] Implementar visualizaciones gráficas como Chart.js.
 
 
 
