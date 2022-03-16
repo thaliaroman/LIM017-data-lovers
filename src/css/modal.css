@@ -155,15 +155,17 @@
     color: white;
 }
 
-.btnStats{
+.containerBtn{
     text-align: right;
-
+    
 }
-
-.btn{
-    /* margin-left:40 px ; */
-    font-size: 20px;
-
+#btnStats{
+    background: rgb(8, 8, 8);
+    width: 150px;
+    height:30px;
+    font-size:16px;
+    border-radius: 10px;
+    color: white;
 }
 
 #myChart{
@@ -202,5 +204,14 @@
 .information h2{
   font-size: 18px;
 }
-
+.containerBtn{
+    text-align: center;
+    
+}
+#btnStats{
+    width: 78px;
+    height:24px;
+    font-size:16px;
+    text-align: center;
+}
 }
