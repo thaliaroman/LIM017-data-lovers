@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>Data Lovers</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/card.css" />
+    <link rel="stylesheet" href="css/modal.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+  </head>
+  <body>
+    <header class="menu-bar" id="menu-bar">
+      <div class="search">
+        <img src="images/lupa.png">
+        <input type="search" placeholder="ingresa el nombre de tu pokemon" class="search_box" id="search"/>
+      </div>
+      <div class="container">
+        <div class="container-logo">
+          <a href="index.html"><img src="images/logo.png" alt="" class="logo-pokemon"></a>
+        </div>
+        <div class="nav-bar" id="nav-bar">
+          <input type="checkbox" id="ckbox"/>
+          <label for="ckbox" class="drawer">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+          </label>
+          <nav class="menu">
+            <ul>
+              <li class="item-menu"><a><img src="images/ordenar2.png" alt="ordenar" class="images-ordenar">ORDENAR</a>
+                <ul class="sub-menu uno">
+                  <li><a id="asc">ASCENDENTE</a></li>
+                  <li><a id="desc">DESCENDENTE</a></li>
+                </ul>
+              </li>
+              <li class="item-menu"><a><img src="images/flirtrar2.png" alt="filtrar" class="images-filtrar">FILTRAR</a>
+                <ul class="sub-menu dos">
+                  <li><a id="forType">POR TIPO</a></li>
+                  <li><a id="forByWeaknesses">POR DEBILIDAD</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section id="banner">
+        <img src="images/banner.png" alt="banner-main">
+        <div class="container">
+          <h2>Bienvenido pokemon lover,</h2>
+          <p>Conoce más sobre tus pokemones favoritos</p>
+        </div>
+      </section>
+    </main>
+    <div class="select">
+      <select name="type" id="type">
+        <option>Tipo  de pokemon</option>
+        <option value="fire">Fuego (fire)</option>
+        <option value="grass">Hierva (grass)</option>
+        <option value="poison">Veneno (poison)</option>
+        <option value="flying">Volador (flying)</option>
+        <option value="water">Agua (water)</option>
+        <option value="bug">Bicho (bug)</option>
+        <option value="electric">Eléctrico (electric)</option>
+        <option value="ground">Terrestre (ground)</option>
+        <option value="fighting">Luchador (fighting)</option>
+        <option value="psychic">Psíquico (psychic)</option>
+        <option value="rock">Roca (rock)</option>
+        <option value="ice">Hielo (ice)</option>
+        <option value="ghost">Fantasma (ghost)</option>
+        <option value="dragon">Dragón (dragon)</option>
+        <option value="fairy"> Hada (fairy)</option>
+        <option value="dark">Oscuro (dark)</option>
+        <option value="steel">Acero (steel)</option>
+        <option value="normal">Normal (normal)</option>
+      </select>
+    </div>
+    <div class="select2">
+      <select name="weaknesses" id="weaknesses">
+        <option>Debilidades</option>
+        <option value="fire">Fuego (fire)</option>
+        <option value="grass">Hierva (grass)</option>
+        <option value="poison">Veneno (poison)</option>
+        <option value="flying">Volador (flying)</option>
+        <option value="water">Agua (water)</option>
+        <option value="bug">Bicho (bug)</option>
+        <option value="electric">Eléctrico (electric)</option>
+        <option value="ground">Terrestre (ground)</option>
+        <option value="fighting">Luchador (fighting)</option>
+        <option value="psychic">Psíquico (psychic)</option>
+        <option value="rock">Roca (rock)</option>
+        <option value="ice">Hielo (ice)</option>
+        <option value="ghost">Fantasma (ghost)</option>
+        <option value="dragon">Dragón (dragon)</option>
+        <option value="fairy"> Hada (fairy)</option>
+        <option value="dark">Oscuro (dark)</option>
+        <option value="steel">Acero (steel)</option>
+      </select>
+    </div>
+    <div id="containerCalculatebyType">
+      <div id="countFilteredPokemon" class="countFilteredPokemon">
+        <p id="sumOfPokemons"></p>
+        <p id="paragraph">&nbsp;Pokemones</p>
+      </div><br>
+      <div id="percentagesByPokemon" class="percentagesByPokemon">
+        <p id="paragraph2"> Pokemones de este tipo: &nbsp;</p>
+        <p id="percentage"></p>
+        </div><br>
+    </div>
+    <div id="containerCalculatebyWeaknesses">
+      <div class="countFilteredPokemon">
+        <p class="sumOfPokemons"></p>
+        <p class="paragraph">&nbsp;Pokemones</p>
+      </div><br>
+      <div class="percentagesByPokemon">
+        <p class="paragraph2"> Pokemones con esta debilidad: &nbsp;</p>
+        <p class="percentage"></p>
+        </div><br>
+    </div>
+    <div id="myModal" class="modal">
+    </div>
+    <section id="pokemon-container" class="pokemon-container">
+    </section>
+    <div id="root"></div>
+    <script src="main.js" type="module"></script>
+    <footer>
+      <p>(c) Todos los derechos reservados - Pokemon's House <br>
+        Diseñado por <a href="lucerovp@gmail.com">Gabito</a> && <a href="thaly31955@gmail.com">Thali</a></p>
+    </footer>
+  </body>
+</html>

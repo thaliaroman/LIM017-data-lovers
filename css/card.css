@@ -1,0 +1,153 @@
+.pokemon-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.pokemon-container .container{
+    margin-left: 71px;
+    margin-bottom: 45px;
+}
+
+.pokemon-container .container .buttonCard{
+    border-radius: 10px;
+    cursor: pointer;
+}
+.pokemon-container .container .card{
+    padding: 30px 30px;
+    background: rgb(240, 236, 236);
+}
+
+.pokemon-container .container .information{
+    /* background: rgb(188, 210, 236); */
+    background: white;
+    margin-top: 6px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.pokemon-container .container .number-pokemon{
+    margin-top: 6px;
+    margin-left: 6px;
+    font-size: 12px;
+    color: gray;
+    text-align: left;
+}
+
+.pokemon-container .container .pokemon-name{
+    font-size: 22px;
+    color: rgb(10, 10, 10);
+}
+
+/* .pokemon-container .container .type-pokemon{
+    font-size: 15px;
+} */
+
+.type-pokemon{
+    font-size: 15px;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.type-pokemon .type-tag{
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.type-pokemon .type-tag.grass{
+    background: rgb(40, 228, 112);
+}
+
+.type-pokemon .type-tag.poison{
+    background: rgb(128, 13, 173);
+    color: white;
+}
+
+.type-pokemon .type-tag.fire{
+    background: orange;
+}
+
+.type-pokemon .type-tag.flying{
+    background: rgb(7, 214, 241);
+}
+
+.type-pokemon .type-tag.water{
+    background: blue;
+    color: white;
+}
+
+.type-pokemon .type-tag.bug{
+    background: rgb(57, 117, 8);
+    color: white;
+}
+
+.type-pokemon .type-tag.electric{
+    background: yellow;
+}
+
+.type-pokemon .type-tag.ground{
+    background: rgba(165, 42, 42, 0.822);
+    color: white;
+}
+
+.type-pokemon .type-tag.fighting{
+    background: rgb(102, 87, 39);
+    color: white;
+}
+
+.type-pokemon .type-tag.psychic{
+    background: rgb(241, 116, 137);
+}
+
+.type-pokemon .type-tag.rock{
+    background: rgb(153, 153, 41);
+    color: white;
+}
+
+.type-pokemon .type-tag.ice{
+    background: rgb(95, 148, 228);
+    color: white;
+}
+
+.type-pokemon .type-tag.ghost{
+    background: rgb(177, 177, 176);
+}
+
+.type-pokemon .type-tag.dragon{
+    background: rgb(235, 56, 220);
+}
+
+.type-pokemon .type-tag.fairy{
+    background: pink;
+}
+
+.type-pokemon .type-tag.dark{
+    background: black;
+    color: white;
+}
+
+.type-pokemon .type-tag.steel{
+    background: rgb(177, 177, 176);
+}
+
+.type-pokemon .type-tag.normal{
+    background: grey;
+    color: white;
+}
+
+
+@media (max-width:768px){
+    .pokemon-container{
+        display: flex;
+        height: 100%;
+        overflow: scroll;
+    }
+
+    .pokemon-container .container{
+        margin-left: 20px;
+    }
+}
